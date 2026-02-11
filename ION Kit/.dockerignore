@@ -1,0 +1,79 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test and coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+
+# Node
+node_modules/
+.npm/
+.yarn-cache/
+
+# Documentation (include only essential)
+SYSTEM_REVIEW.md
+CRITICAL_FIXES.md
+FIXES_APPLIED.md
+REVIEW_SUMMARY.md
+PROGRESS.md
+
+# Workspace (don't include user data)
+workspace/
+output/
+temp/
+tmp/
+
+# Docker
+Dockerfile
+docker-compose.yml
+DOCKER.md
+.dockerignore

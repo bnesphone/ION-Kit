@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  ion-kit:
+    build: .
+    image: ion-kit:latest
+    container_name: ion-kit
+    volumes:
+      - ./workspace:/workspace
+      - ./output:/output
+    environment:
+      - ION_KIT_VERSION=6.1.0
+    command: check
+    
+  # Service for running tests
+  ion-kit-test:
+    build: .
+    image: ion-kit:latest
+    container_name: ion-kit-test
+    volumes:
+      - ./workspace:/workspace
+    command: validate
+    
+  # Service for development with API mocker
+  ion-kit-mock-api:
+    build: .
+    image: ion-kit:latest
+    container_name: ion-kit-mock-api
+    volumes:
+      - ./schemas:/schemas
+    ports:
+      - "8000:8000"
+    command: mock /schemas/api-schema.json
+
+# Usage:
+# docker-compose up ion-kit          # Run check
+# docker-compose up ion-kit-test     # Run tests
+# docker-compose up ion-kit-mock-api # Start mock API server
+# docker-compose run ion-kit analyze /workspace

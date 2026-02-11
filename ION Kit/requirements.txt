@@ -1,0 +1,22 @@
+# Python Dependencies for AI Agent Toolkit
+# Converted & Merged for Universal Kit
+
+Pillow>=10.0.0
+numpy>=1.24.0
+requests
+colorama
+tqdm
+
+# AI Background Removal
+rembg>=2.0.50
+onnxruntime>=1.17.0
+scikit-image
+numba
+safetensors
+huggingface-hub
+
+# Web Testing (E2E with Playwright)
+playwright>=1.40.0
+
+# Note: After installing, run this command to install browsers:
+# playwright install chromium

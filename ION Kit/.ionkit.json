@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "version": "1.0.0",
+  "description": "ION Kit Configuration File",
+  
+  "preferences": {
+    "verbose": false,
+    "colorOutput": true,
+    "autoUpdate": true,
+    "telemetry": false
+  },
+  
+  "tools": {
+    "backgroundRemover": {
+      "defaultModel": "u2net",
+      "outputFormat": "png",
+      "quality": 95
+    },
+    "scraper": {
+      "timeout": 30000,
+      "userAgent": "ION-Kit-Scraper/1.0",
+      "maxRetries": 3
+    },
+    "packager": {
+      "defaultIcon": "",
+      "compression": "normal"
+    },
+    "mocker": {
+      "defaultPort": 8000,
+      "cors": true,
+      "logging": true
+    }
+  },
+  
+  "validation": {
+    "strictMode": false,
+    "autoFix": true,
+    "ignoreWarnings": false
+  },
+  
+  "templates": {
+    "customTemplatesPath": "./templates",
+    "defaultTemplate": "react-typescript"
+  },
+  
+  "performance": {
+    "showTimings": false,
+    "maxConcurrentTasks": 4,
+    "cacheEnabled": true
+  }
+}
