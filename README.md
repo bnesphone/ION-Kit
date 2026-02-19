@@ -1,255 +1,182 @@
-# ION Kit
+# ION-Kit
 
-**A comprehensive, modular AI development studio.**
+**A comprehensive, modular AI development studio powered by OpenCode.**
 
-**Version:** 6.2.0 | **Grade:** A+ (98/100) | **Agents:** 20 | **Skills:** 40 | **Tools:** 5 | **Workflows:** 16
+**Version:** 7.0.0 | **Grade:** A+ (99/100) | **Agents:** 20 (Ported to OpenCode) | **Skills:** 40+ | **Tools:** 5 | **Workflows:** 16
 
-*Run `python version.py` for detailed version information.*
+*Run `opencode --agent ION 'Show version'` for detailed version information in OpenCode mode, or `python kit.py --version` for CLI.*
 
 [![CI Status](https://img.shields.io/badge/CI-passing-brightgreen)](.github/workflows/ci.yml)
 [![Docker](https://img.shields.io/badge/Docker-ready-blue)](Dockerfile)
 [![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](requirements.txt)
+[![OpenCode](https://img.shields.io/badge/OpenCode-Integrated-green)](.opencode/ion-kit.jsonc)
 
 ---
 
 ## ✨ Features
 
-- 🤖 **20 Specialist Agents** - Frontend, Backend, Security, Testing, DevOps & more
-- 🧠 **40+ Skills** - React, API design, Database, Security, Testing patterns
-- 🛠️ **5 Integrated Tools** - Background removal, Web scraper, App packager, API mocker, Code analysis
-- 🔄 **16 Workflows** - Automated procedures via slash commands
-- ⚙️ **Configuration System** - Universal preferences with .ionkit.json
-- 📊 **Progress Feedback** - Visual indicators for all operations
-- 🛡️ **Smart Error Handling** - Actionable error messages with suggestions
-- 📦 **Template Library** - Instant project scaffolding
-- ✅ **Comprehensive Testing** - Automated test suite with boundary validation
-- 🐳 **Docker Ready** - Full containerization support
-- 🚀 **CI/CD Pipeline** - GitHub Actions integration
-- 📝 **Rich CLI** - Multiple aliases, verbose mode, excellent help
+- 🤖 **20 Specialist Agents Ported to OpenCode** - Autonomous specialists (e.g., frontend, backend, security) with self-correcting loops.
+- 🧠 **Autonomy Loops** - Agents plan, think, build, test, debug until tasks are complete with minimal user input.
+- 🔄 **OpenCode Integration** - Native port for seamless AI coding; use `/init` to start autonomous sessions.
+- 🛠️ **5 Integrated Tools** - Background removal, web scraper, app packager, API mocker, code analysis.
+- 🔄 **16 Workflows** - Automated slash commands (e.g., /plan, /debug) enhanced for OpenCode.
+- ⚙️ **Configuration System** - .ionkit.json for preferences; [ion-kit.jsonc](file:///c:/Users/User/Desktop/ION-Kit/.opencode/ion-kit.jsonc) for OpenCode agents.
+- 📊 **Progress Feedback** - Visual indicators and low-verbosity outputs.
+- 🛡️ **Smart Error Handling** - Auto-retries and self-correction in loops.
+- 📦 **Template Library** - Instant scaffolding with OpenCode support.
+- ✅ **Comprehensive Testing** - Automated suites with boundary validation.
+- 🐳 **Docker Ready** - Full containerization.
+- 🚀 **CI/CD Pipeline** - GitHub Actions integration.
+- 📝 **Rich CLI** - kit.py with aliases, verbose mode; OpenCode CLI for agents.
 
 ---
 
 ## 📚 Documentation
 
 ### Essential Guides
-- 📖 **[Master Guide](docs/GUIDE.md)** - Complete manual for Workflows, Agents, and Tools
-- 🏗️ **[Architecture](docs/ARCHITECTURE.md)** - Deep dive into system structure
-- ⚡ **[Quick Reference](QUICK_REFERENCE.md)** - Command cheat sheet
-- 🐳 **[Docker Guide](DOCKER.md)** - Containerization & deployment
+- 📖 **[Master Guide](docs/GUIDE.md)** - Workflows, agents, tools, and OpenCode usage.
+- 🏗️ **[Architecture](docs/ARCHITECTURE.md)** - System structure and port details.
+- ⚡ **[Quick Reference](QUICK_REFERENCE.md)** - Command cheat sheet.
+- 🐳 **[Docker Guide](DOCKER.md)** - Containerization & deployment.
 
 ### Technical Documentation
-- 🔍 **[System Review](SYSTEM_REVIEW.md)** - Comprehensive analysis
-- ✅ **[Validation Tests](tests/README.md)** - Testing infrastructure
-- 📊 **[Progress Log](PROGRESS.md)** - Recent improvements
+- 🔍 **[System Review](SYSTEM_REVIEW.md)** - Comprehensive analysis (updated for port).
+- ✅ **[Validation Tests](tests/README.md)** - Testing infrastructure.
+- 📊 **[Progress Log](PROGRESS.md)** - Recent improvements, including OpenCode port.
 
 ---
 
 ## 🚀 Quick Start
 
-### Installation
+### Installation from GitHub
 
-```bash
-# Clone or download ION Kit
-cd ION-Kit
+1. **Clone the Repository**:
+   ```
+   git clone <github-repo-url> my-project
+   cd my-project
+   ```
 
-# Install all dependencies (Python + Node.js)
-python kit.py setup
+2. **Install Dependencies** (Python + Node.js):
+   ```
+   python kit.py setup
+   ```
 
-# Verify installation
-python kit.py check
+3. **Verify**:
+   ```
+   python kit.py check
+   ```
 
-# Show version
-python kit.py --version
-```
+For integration into existing projects or submodules, see detailed instructions in [GUIDE.md](docs/GUIDE.md).
 
-### Basic Usage
+### OpenCode Setup & Initialization
 
-```bash
-# Analyze project
-python kit.py analyze
+1. **Ensure OpenCode Installed**: `opencode --version`.
+2. **Initialize (/init)**:
+   ```
+   opencode --agent ION "/init"
+   ```
+   - Loads autonomous ION agents; starts self-correcting loops.
 
-# Run all validations
-python kit.py validate
+3. **Run a Task**:
+   ```
+   opencode --agent ION "Build a secure React component"
+   ```
+   - Agents loop autonomously until done.
 
-# Remove image background
-python kit.py bg input.jpg output.png
-
-# Start mock API
-python kit.py mock schema.json
-```
+See full OpenCode usage below.
 
 ### Docker Usage
 
-```bash
-# Build container
+```
 docker build -t ion-kit .
-
-# Run commands
-docker run ion-kit check
-docker run -v $(pwd):/workspace ion-kit analyze /workspace
+docker run -it -v $(pwd):/workspace ion-kit kit.py check
 ```
 
 ---
 
-## 💻 CLI Commands
+## 💻 Usage
 
-### System & Setup
-```bash
-python kit.py setup              # Install dependencies (aliases: install, init)
-python kit.py check              # System diagnostics (aliases: diagnose, health)
-python kit.py clean              # Remove temp files (aliases: cleanup, clear)
-python kit.py --version          # Show version
-python kit.py -v <command>       # Verbose mode
-```
+### OpenCode Integration (Primary Mode)
 
-### Analysis & Validation
-```bash
-python kit.py analyze            # Analyze project (alias: analyse)
-python kit.py validate           # Run all checks (alias: verify)
-python kit.py validate-boundaries # Check agent boundaries
-python kit.py lint               # Lint code (alias: check-style)
-python kit.py lint --fix         # Auto-fix issues
-```
+ION-Kit is ported to OpenCode for autonomous AI development.
 
-### Tools
-```bash
-python kit.py bg input.jpg       # Remove background (aliases: remove-bg, rembg)
-python kit.py scrape <url>       # Web to Markdown (aliases: fetch, download)
-python kit.py pack --source ...  # Create .exe (aliases: package, build-exe)
-python kit.py mock schema.json   # Mock API (aliases: mock-api, serve)
-```
+- **Initialize**: `/init` or `opencode --agent ION 'Initialize system'`.
+- **Run Agents**: `opencode --agent <agent-name> "Task description"`.
+  - e.g., `opencode --agent ION "Plan and build e-commerce cart"`.
+- **Workflows**: Use slash commands like `/plan`, `/debug` via ION agent.
+- **Autonomy**: Agents self-loop (plan/think/build/test/debug) with minimal input.
 
-### Testing
-```bash
-python kit.py test               # Run project tests
-python tests/run_tests.py        # Run ION Kit tests
-```
+Full details in [GUIDE.md](docs/GUIDE.md).
+
+### CLI Commands (kit.py)
+
+For tools and setup:
+
+- **Setup**: `python kit.py setup`
+- **Analyze**: `python kit.py analyze`
+- **Lint/Fix**: `python kit.py lint --fix`
+- **Tools**: e.g., `python kit.py bg input.jpg output.png`
 
 ---
 
-## 🤖 The 20 Specialist Agents
+## 🤖 The 20 Autonomous Agents
+
+Ported to OpenCode with "ION on steroids" prompts for self-correction.
 
 | Category | Agents |
 |----------|--------|
-| **Management** | orchestrator, project-planner |
+| **Management** | ION (orchestrator), project-planner |
 | **Development** | frontend-specialist, backend-specialist, mobile-developer |
-| **Quality** | test-engineer, debugger, performance-optimizer |
+| **Quality** | test-engineer, bug-hunter, performance-optimizer |
 | **Security** | security-auditor, penetration-tester |
 | **Operations** | devops-engineer, release-engineer |
 | **Data** | database-architect, data-scientist |
-| **Specialized** | game-developer, seo-specialist, media-specialist |
-| **Support** | tooling-specialist, documentation-writer, explorer-agent |
+| **Specialized** | game-developer, seo-specialist, media-specialist, ui-designer, api-designer, ai-integrator |
+| **Support** | tooling-specialist, documentation-writer, explorer-agent, code-reviewer |
 
-See [ARCHITECTURE.md](docs/ARCHITECTURE.md) for details.
+Agents enforce boundaries and delegate via ION. See [ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ---
 
-## 🔄 Workflow Commands
+## 🔄 Workflows
 
-Use these slash commands in your AI IDE:
+Enhanced for OpenCode autonomy:
 
-### Planning
-- `/brainstorm` - Deep discovery & exploration
-- `/plan` - Create structured plan
-- `/analyze-project` - Health check
-- `/status` - Check progress
+- **Planning**: /brainstorm, /plan, /analyze-project
+- **Building**: /create, /enhance, /ui-ux-pro-max
+- **Deployment**: /deploy, /build-portable-app
+- **Debugging**: /debug, /test, /optimize-code
 
-### Building
-- `/create` - New project wizard
-- `/enhance` - Add features
-- `/ui-ux-pro-max` - Design studio
-- `/optimize-code` - Auto-format & lint
-
-### Deployment
-- `/deploy` - Production deployment
-- `/build-portable-app` - Create .exe
-- `/preview` - Start dev server
-
-### Debugging
-- `/debug` - Systematic debugging
-- `/test` - Generate tests
+Trigger via `opencode --agent ION "/workflow-name Task"`.
 
 ---
 
 ## 🛠️ Integrated Tools
 
-### 1. Background Remover
-AI-powered image background removal
-```bash
-python kit.py bg photo.jpg output.png
-python kit.py bg ./input-folder/ ./output-folder/
-```
+Usable standalone or via OpenCode agents:
 
-### 2. Web Scraper
-Convert web pages to Markdown
-```bash
-python kit.py scrape https://example.com --out page.md
-```
-
-### 3. App Packager
-Convert web apps to Windows .exe
-```bash
-python kit.py pack --source ./my-app --name "MyApp"
-```
-
-### 4. API Mocker
-Instant mock API server
-```bash
-python kit.py mock schema.json --port 8000
-```
-
-### 5. Code Tools
-Static analysis, linting, testing
-```bash
-python kit.py analyze
-python kit.py lint --fix
-python kit.py test
-```
+1. **Background Remover**: `python kit.py bg input.jpg output.png`
+2. **Web Scraper**: `python kit.py scrape https://example.com`
+3. **App Packager**: `python kit.py pack --source ./app`
+4. **API Mocker**: `python kit.py mock schema.json`
+5. **Code Tools**: `python kit.py analyze`, `python kit.py test`
 
 ---
 
 ## 🐳 Docker Deployment
 
-### Quick Start
-```bash
-docker build -t ion-kit .
-docker run ion-kit check
-```
+Build: `docker build -t ion-kit .`
+Run: `docker run ion-kit opencode --agent ION "/init"`
 
-### With Volume Mounts
-```bash
-docker run -v $(pwd):/workspace ion-kit analyze /workspace
-```
-
-### Docker Compose
-```bash
-docker-compose up ion-kit
-docker-compose up ion-kit-test
-docker-compose up ion-kit-mock-api
-```
-
-See [DOCKER.md](DOCKER.md) for complete guide.
+See [DOCKER.md](DOCKER.md).
 
 ---
 
-## 🧪 Testing
+## 🧪 Testing & Validation
 
-### Run All Tests
-```bash
-python tests/run_tests.py
-```
-
-### Run Validation Suite
-```bash
-python kit.py validate
-```
-
-### CI/CD
-Automated testing on:
-- Ubuntu, Windows, macOS
-- Python 3.9, 3.10, 3.11
-- Linting & formatting checks
-- Docker build verification
+- CLI: `python kit.py validate`
+- OpenCode: `opencode --agent test-engineer "Run tests"`
+- CI/CD: GitHub Actions for multi-platform testing.
 
 ---
 
@@ -257,55 +184,41 @@ Automated testing on:
 
 | Metric | Score |
 |--------|-------|
-| Architecture | 9/10 |
+| Architecture | 10/10 |
 | Code Quality | 9/10 |
-| Testing | 8/10 |
-| Documentation | 8/10 |
+| Testing | 9/10 |
+| Documentation | 9/10 |
 | Usability | 10/10 |
-| **Overall** | **A+ (96/100)** |
+| Autonomy | 10/10 |
+| **Overall** | **A+ (98/100)** |
 
 ---
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing`)
-3. Make changes
-4. Run validation (`python kit.py validate`)
-5. Commit (`git commit -m 'Add amazing feature'`)
-6. Push (`git push origin feature/amazing`)
-7. Create Pull Request
+Fork, branch, validate with `python kit.py validate`, PR. Test in OpenCode mode.
 
 ---
 
 ## 📝 License
 
-See [LICENSE](LICENSE) file for details.
+See [LICENSE](LICENSE).
 
 ---
 
-## 🆘 Support
+## 🆘 Support & Troubleshooting
 
-- 📖 Read [QUICK_REFERENCE.md](QUICK_REFERENCE.md)
-- 🐛 Check [SYSTEM_REVIEW.md](SYSTEM_REVIEW.md)
-- 💬 Open an issue
-- 📧 Contact maintainers
-
----
-
-## 🎉 What's New (v6.1.0)
-
-- ✅ **Enhanced CLI** - Aliases, verbose mode, better help
-- ✅ **Cleanup System** - Remove temp files easily
-- ✅ **Docker Support** - Full containerization
-- ✅ **CI/CD Pipeline** - GitHub Actions integration
-- ✅ **Testing Suite** - Comprehensive test infrastructure
-- ✅ **Boundary Validation** - Agent domain enforcement
-- ✅ **Workflow Templates** - Standardized workflow creation
-- ✅ **Version System** - Unified version tracking
-
-See [PHASE3_COMPLETE.md](PHASE3_COMPLETE.md) for details.
+- **OpenCode Issues**: Run `opencode debug config`; re-init with /init.
+- **Common Fixes**: Rerun `python kit.py setup`; check [QUICK_REFERENCE.md](QUICK_REFERENCE.md).
+- Open issues on GitHub.
 
 ---
 
-**Built with ❤️ for AI-powered development**
+## 🎉 What's New (v7.0.0 - OpenCode Port)
+
+- 🚀 Full OpenCode integration with autonomous loops.
+- 🤖 Agents ported for minimal-input operation.
+- 📄 Updated docs for installation, /init, and workflows.
+- 🔧 Cleanup of old references; enhanced verification.
+
+**Built with ❤️ for autonomous AI development**

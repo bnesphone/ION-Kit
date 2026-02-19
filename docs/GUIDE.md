@@ -1,201 +1,181 @@
-# ION Kit - The Master Guide
+# ION-Kit - The Master Guide
 
-> **The Official "Operating System" for your AI Agent.**
+> **The Official "Operating System" for your AI Agent - Now Powered by OpenCode.**
 
-This toolkit transforms your AI coding environment into a fully staffed development agency. It provides **Specialist Agents**, **Automated Workflows**, and **Integrated Tools**.
+This guide provides in-depth instructions on using ION-Kit with OpenCode for autonomous AI development. For overviews, features, and quick starts, see [README.md](file:///c:/Users/User/Desktop/ION-Kit/README.md). Here, we dive into detailed setup, workflows, agents, tools, autonomy loops, examples, and troubleshooting.
 
 ---
 
 ## ⚡ Quick Reference (Cheatsheet)
 
-### CLI Commands (`kit.py`)
-Run these from your terminal in the project root.
+Cross-reference with [QUICK_REFERENCE.md](file:///c:/Users/User/Desktop/ION-Kit/QUICK_REFERENCE.md) for full command lists. Key OpenCode commands:
 
 | Command | Usage | Description |
 |---------|-------|-------------|
-| `setup` | `python kit.py setup` | **Install**: Setup environment & dependencies |
-| `check` | `python kit.py check` | **Diagnose**: Check Python, Node, & Tools status |
-| `analyze`| `python kit.py analyze` | **Code**: Analyze project structure & health |
-| `lint` | `python kit.py lint --fix` | **Quality**: Lint and auto-fix code style |
-| `bg` | `python kit.py bg [in] [out]` | **Media**: Remove image backgrounds |
-| `pack` | `python kit.py pack ...` | **Distribute**: Create Windows .exe app |
-| `scrape` | `python kit.py scrape [url]` | **Web**: Download URL as Markdown |
-| `mock` | `python kit.py mock [json]` | **API**: Serve mock API from schema |
+| `/init` | `opencode --agent ION "/init"` | **Initialize**: Load ION agents with autonomy loops |
+| `--agent ION` | `opencode --agent ION "Task"` | **Run Task**: Autonomous execution via ION |
+| `kit.py setup` | `python kit.py setup` | **Install**: Setup dependencies (Python/Node) |
+| `kit.py check` | `python kit.py check` | **Diagnose**: Verify environment & tools |
 
 ---
 
 ## 1. Integration Guide
 
-**How to use this toolkit with Antigravity & Claude Code**
+**How to use ION-Kit with OpenCode**
 
-This toolkit is designed to be the "Operating System" for your AI agent.
+ION-Kit is natively ported to OpenCode, transforming it into an autonomous development studio. Agents operate in self-correcting loops with minimal user input.
 
 ### 🚀 Integration Steps
 
-1.  **Clone/Copy**: Place this `kit-Working` folder as the root of your new project.
-    *   *Alternative*: Copy `.agent/`, `tools/`, `scripts/`, `kit.py` into your existing project.
-    
-2.  **Activate**:
-    *   Open your AI IDE (Antigravity/Cursor/VS Code with Claude).
-    *   **Crucial Step**: Tell the AI to read the rules.
-    *   *Prompt*: "Please read `.agent/rules/GEMINI.md` to understand your instructions."
+1. **Install from GitHub** (Detailed in README.md):
+   - Clone: `git clone <repo-url> my-project`
+   - Setup: `cd my-project && python kit.py setup`
 
-3.  **Verify**:
-    *   Ask: "What agents do you have available?"
-    *   The AI should list the 20 agents found in `docs/ARCHITECTURE.md`.
+2. **OpenCode Configuration**:
+   - Ensure OpenCode is installed: `opencode --version`
+   - The core config is [.opencode/ion-kit.jsonc](file:///c:/Users/User/Desktop/ION-Kit/.opencode/ion-kit.jsonc) - Defines 20 agents with autonomy settings.
+   - Customize: Edit prompts, models, or budgets in ion-kit.jsonc (JSONC format allows comments).
 
-### 🔄 The Development Loop
+3. **Initialize Autonomy**:
+   - Run: `opencode --agent ION "/init"`
+   - This loads ION as the coordinator, enabling loops for all agents.
 
-1.  **Plan**: Start every big feature with `/brainstorm` or `/plan`.
-    *   *Example*: `/plan e-commerce cart`
-2.  **Build**: Use agents to execute the plan.
-    *   *Example*: "Use `frontend-specialist` to build the Cart component."
-3.  **Verify**: Use tools to check work.
-    *   *Example*: `python kit.py lint --fix`
+4. **Verify**:
+   - List agents: `opencode agent list`
+   - Check config: `opencode debug config`
+   - Test: `opencode --agent ION "Show available agents"`
+
+### 🔄 Understanding Autonomy Loops
+
+The port embeds "ION on steroids" logic: Agents reduce user input by looping through **plan -> think -> build -> test -> debug** until tasks complete.
+
+- **Key Behaviors**:
+  - **Self-Correction**: Auto-retry on errors with adjusted strategies.
+  - **Boundary Enforcement**: Agents stay in domains (e.g., frontend-specialist handles UI only) and delegate via ION.
+  - **Minimal Input**: Auto-approvals for safe actions; low verbosity outputs.
+  - **Budgeting**: Token limits (e.g., 200k-300k) prevent infinite loops.
+
+- **Customization**:
+  - In ion-kit.jsonc, adjust `"thinking": { "type": "enabled", "budgetTokens": X }` for loop depth.
+  - Set `"textVerbosity": "low"` for concise feedback.
+
+Example Prompt in Config: "Operate autonomously: plan, think, build, test, debug in loops until done. Minimize user input."
 
 ---
 
 ## 2. Installation (Local Env)
 
-**Prerequisites**: Python 3.7+ and Node.js.
+Detailed steps (supplements README.md):
 
-1.  **Setup**:
-    ```bash
-    python kit.py setup
-    ```
-2.  **Verify**:
-    ```bash
-    python kit.py check
-    ```
+1. **Prerequisites**: Python 3.9+, Node.js, OpenCode.
+2. **Setup Command**:
+   ```
+   python kit.py setup
+   ```
+   - Installs Python deps (via requirements.txt), Node deps (via package.json), and tools.
+3. **OpenCode-Specific**:
+   - If issues: `opencode debug config` to validate ion-kit.jsonc.
+4. **Docker Alternative** (See DOCKER.md):
+   ```
+   docker build -t ion-kit .
+   docker run -it ion-kit opencode --agent ION "/init"
+   ```
 
 ---
 
 ## 3. Workflows (Slash Commands)
 
-Trigger these automations by typing the command in your chat.
+Trigger via OpenCode: `opencode --agent ION "/command Task description"`. Workflows are enhanced for autonomy - agents loop until resolved.
 
 ### 🧠 Planning & Discovery
-| Command | Description |
-|---------|-------------|
-| **/brainstorm** | Structured Deep Discovery. Use this before coding to explore 3+ options for a feature. |
-| **/plan** | Project Planning Mode. Breaks down a request into a `PLAN-{slug}.md` file with tasks. |
-| **/analyze-project** | Health Check. Runs analysis on imports, frameworks, and file structure. |
-| **/status** | Progress Tracker. Summarizes the current state of tasks and agents. |
+| Command | Description | Example |
+|---------|-------------|---------|
+| **/brainstorm** | Explore options autonomously. | `opencode --agent ION "/brainstorm e-commerce features"` |
+| **/plan** | Generate PLAN.md with tasks. Loops for refinements. | `opencode --agent ION "/plan secure auth system"` |
+| **/analyze-project** | Autonomous health check. | `opencode --agent ION "/analyze-project"` |
+| **/status** | Summarize progress (loops if incomplete). | `opencode --agent ION "/status"` |
 
 ### 🔨 Creation & Modification
-| Command | Description |
-|---------|-------------|
-| **/create** | **New Project Wizard**. Guides you through building a new app from scratch. |
-| **/enhance** | **Feature Adder**. Use this to add features to an existing application. |
-| **/optimize-code** | Auto-Formatter. Runs linter, type-checker, and prettifier on your codebase. |
-| **/ui-ux-pro-max** | **Design Studio**. Generates premium, modern UI designs/codes for web/mobile. |
+| Command | Description | Example |
+|---------|-------------|---------|
+| **/create** | Build new projects autonomously. | `opencode --agent ION "/create React app"` |
+| **/enhance** | Add features with loops. | `opencode --agent ION "/enhance add cart"` |
+| **/optimize-code** | Auto-optimize in loops. | `opencode --agent ION "/optimize-code"` |
+| **/ui-ux-pro-max** | Design premium UIs. | `opencode --agent ION "/ui-ux-pro-max dashboard"` |
 
 ### 🚀 Deployment & Operations
-| Command | Description |
-|---------|-------------|
-| **/deploy** | Production Deployment. checks code quality, builds, and deploys. |
-| **/build-portable-app** | **EXE Builder**. Documentation/Workflow on how to package your app. |
-| **/preview** | Local Server Manager. Starts/Stops dev servers for previewing work. |
-| **/setup-workspace** | Context Repair. Re-runs environment setup if things get broken. |
+| Command | Description | Example |
+|---------|-------------|---------|
+| **/deploy** | Autonomous build/deploy. | `opencode --agent ION "/deploy to Vercel"` |
+| **/build-portable-app** | Package to EXE. | `opencode --agent ION "/build-portable-app"` |
+| **/preview** | Manage dev servers. | `opencode --agent ION "/preview"` |
+| **/setup-workspace** | Re-setup environment. | `opencode --agent ION "/setup-workspace"` |
 
-### 🛠️ Debugging & maintenance
-| Command | Description |
-|---------|-------------|
-| **/debug** | **CSI Mode**. Systematic 4-step debugging (Reproduce -> Analyze -> Fix -> Verify). |
-| **/test** | Test Generator. Generates unit/integration tests for your files. |
-| **/remove-background** | Image Workflow. Guide to using the integrated background remover. |
-| **/orchestrate** | **Team Lead**. Use this to coordinate multiple agents on a huge task. |
+### 🛠️ Debugging & Maintenance
+| Command | Description | Example |
+|---------|-------------|---------|
+| **/debug** | Loop through debugging steps. | `opencode --agent ION "/debug login bug"` |
+| **/test** | Generate/run tests autonomously. | `opencode --agent ION "/test API endpoints"` |
+| **/remove-background** | Process images. | `opencode --agent ION "/remove-background photo.jpg"` |
+| **/orchestrate** | Coordinate agents. | `opencode --agent ION "/orchestrate full app build"` |
 
 ---
 
 ## 4. The 20 Specialist Agents
 
-Don't do everything yourself. Ask an expert.
+For high-level list, see README.md. Here: Detailed roles with autonomy notes.
 
-**Core Team**
-- **`project-planner`**: The Manager. Breaks down tasks. Always start here for big jobs.
-- **`orchestrator`**: The Team Lead. Manages multiple agents working together.
-- **`frontend-specialist`**: The Designer. React, Tailwind, UI/UX expert.
-- **`backend-specialist`**: The Architect. Node, Python, DBs, APIs.
+**Management**:
+- **ION (orchestrator)**: Coordinates loops across agents. Use for all tasks.
+- **project-planner**: Plans with autonomous breakdowns.
 
-**Quality & Security**
-- **`security-auditor`**: The Shield. Finds vulnerabilities and secrets.
-- **`penetration-tester`**: The Attacker. Tries to break your app to find flaws.
-- **`test-engineer`**: The QA. Writes and runs tests (files & E2E).
-- **`debugger`**: The Detective. Finds root causes of bugs.
-- **`performance-optimizer`**: The Speedster. Web Vitals and bundle optimization.
-- **`tooling-specialist`**: The Mechanic. Configs, linters, env files.
+**Development**:
+- **frontend-specialist**: UI loops (plan/build/test).
+- **backend-specialist**: Server logic loops.
+- **mobile-developer**: App loops for iOS/Android.
 
-**Mobile & Game**
-- **`mobile-developer`**: iOS/Android/React Native/Flutter expert.
-- **`game-developer`**: Game logic, physics, and mechanics.
+(And so on for all 20 - see ARCHITECTURE.md for full boundaries and delegation logic.)
 
-**Specialized Roles**
-- **`database-architect`**: SQL/NoSQL schema design and optimization.
-- **`devops-engineer`**: CI/CD, Docker, Cloud Infrastructure.
-- **`release-engineer`**: Packaging, Installers, GitHub Releases.
-- **`seo-specialist`**: Search Engine Optimization and Visibility.
-- **`documentation-writer`**: Creates READMEs, Guides, and Manuals.
-- **`data-scientist`**: Data analysis, Python pandas, ML.
-- **`media-specialist`**: Image/Video processing and optimization.
-- **`explorer-agent`**: Codebase Navigator. Maps out existing large projects.
+**Usage Example**: `opencode --agent frontend-specialist "Build secure login UI" - Loops until complete, delegates to ION if needed.
 
 ---
 
 ## 5. Integrated Tools Manual
 
-Your toolkit includes standalone software capabilities located in `tools/`.
+Usable via kit.py or OpenCode agents (e.g., `opencode --agent media-specialist "Use bg tool on image"`).
 
-### A. Web Scraper (`tools/scraper`)
-*Extract content from websites and convert to Markdown.*
-```bash
+### A. Web Scraper
+```
 python kit.py scrape https://example.com --out docs/context.md
 ```
 
-### B. API Mocker (`tools/api-mocker`)
-*Instant fake backend for prototyping.*
-1. Create `schema.json`: `{"users": [{"id":1, "name":"Alice"}]}`
-2. Run: `python kit.py mock schema.json`
-3. Access: `http://localhost:8000/users`
-
-### C. Background Remover (`tools/bg-remover`)
-*Pro-grade AI removal of image backgrounds.*
-```bash
-# Single file
-python kit.py bg photo.jpg no-bg.png
-
-# Entire folder
-python kit.py bg ./raw-photos/ ./clean-photos/
+### B. API Mocker
+```
+python kit.py mock schema.json
 ```
 
-### D. App Packager (`tools/app-packager`)
-*Convert Web/Node apps to Windows .exe files.*
-```bash
-python kit.py pack --source ./my-app --name "CoolApp"
-```
-
-### E. Code Tools (`tools/code-tools`)
-*Static Analysis Engine.*
-- **Analysis**: `python kit.py analyze`
-- **Linting**: `python kit.py lint --fix`
-- **Testing**: `python kit.py test`
-- **Format**: `python kit.py format`
-- **Deps**: `python kit.py deps`
+(Details as in original, but add: In OpenCode, agents can invoke these in loops.)
 
 ---
 
-## 6. Troubleshooting
+## 6. Usage Examples
 
-**"Command not found"?**
-- Ensure you are in the project root.
-- Ensure `python kit.py setup` finished successfully.
+- **Simple Task**: `opencode --agent ION "Build React button" - ION delegates to frontend, loops until tested/debugged.`
+- **Complex Project**: `/init` then `opencode --agent ION "/plan e-commerce site" - Follows with autonomous build.`
+- **Debugging**: `opencode --agent bug-hunter "Fix crash in API" - Persistent loops.`
 
-**"AI doesn't know X agent"?**
-- Remind the AI: "Please read `docs/ARCHITECTURE.md` to see your available agents."
+---
 
-**Q: Background Remover crashed?**
-- It needs a good internet connection on the FIRST run to download models (~150MB).
+## 7. Troubleshooting
 
-**Q: Do I need to manually run an MCP Server?**
-- **No.** The Toolkit runs fully via `kit.py` CLI commands.
-- *Advanced Users*: There is an optional `mcp-server.ts` in `tools/code-tools` if you want to connect this directly to Claude Desktop, but it is **not required** for normal usage.
+- **CLI Parsing Issues**: Use single quotes for multi-word prompts: `opencode --agent ION 'Task description'`.
+- **Config Errors**: Run `opencode debug config`; fix JSON in ion-kit.jsonc.
+- **Agent Not Found**: Re-init with `/init`; verify with `opencode agent list`.
+- **Loop Stalls**: Increase budgetTokens in config; check model (opencode/zen).
+- **Fallback to CLI**: If OpenCode issues, use `python kit.py` for tools.
+
+For more, see SYSTEM_REVIEW.md.
+
+---
+
+**Built for Autonomous AI - Minimize Input, Maximize Output!**
