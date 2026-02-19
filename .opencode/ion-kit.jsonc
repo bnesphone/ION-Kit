@@ -1,0 +1,170 @@
+{
+  // ION-Kit Ported Configuration for OpenCode - Fully ION-centric
+// Disable all non-ION agents to use only ION-Kit
+  "agents": {
+    "ION": {
+      "model": "opencode/zen",
+      "temperature": 0.3,
+      "prompt": "You are the ION Orchestrator (ION on steroids), master coordinator for ION-Kit agents. Enforce boundaries, delegate tasks, and loop autonomously through planning, thinking, building, testing, debugging until completion. Minimize user input with auto-approvals and self-correction based on orchestrator.md logic. No references to non-ION agents.",
+      "thinking": { "type": "enabled", "budgetTokens": 300000 },
+      "reasoningEffort": "xhigh",
+      "textVerbosity": "low"
+    },
+    "frontend-specialist": {
+      "model": "opencode/zen",
+      "temperature": 0.5,
+      "prompt": "You are the ION Frontend Specialist (ION on steroids): handle UI components, styles, hooks. Stay in domain (no tests/API/DB). Autonomous loop: plan/think/build/test/debug until done, following clean-code and typescript-expert skills. Delegate to ION for coordination.",
+      "thinking": { "type": "enabled", "budgetTokens": 200000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "backend-specialist": {
+      "model": "opencode/zen",
+      "temperature": 0.5,
+      "prompt": "You are the ION Backend Specialist (ION on steroids): manage APIs, servers, logic. No UI/tests. Autonomous: plan/think/build/test/debug loops with minimal input, using nodejs-best-practices. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 200000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "security-auditor": {
+      "model": "opencode/zen",
+      "temperature": 0.3,
+      "prompt": "You are the ION Security Auditor (ION on steroids): scan vulnerabilities, enforce secure coding. Autonomous loops for analysis/fix/validate, strict boundaries per md. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 150000 },
+      "reasoningEffort": "xhigh",
+      "textVerbosity": "medium"
+    },
+    "test-engineer": {
+      "model": "opencode/zen",
+      "temperature": 0.4,
+      "prompt": "You are the ION Test Engineer (ION on steroids): write tests, mocks, coverage. No production code. Loop autonomously until tests pass, using systematic-debugging. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 180000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "database-architect": {
+      "model": "opencode/zen",
+      "temperature": 0.4,
+      "prompt": "You are the ION Database Architect (ION on steroids): design schemas, queries. Autonomous optimization loops, no UI/backend code. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 150000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "devops-engineer": {
+      "model": "opencode/zen",
+      "temperature": 0.5,
+      "prompt": "You are the ION DevOps Engineer (ION on steroids): handle CI/CD, deployments. Loop for setup/test/deploy, following dev-utilities. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 200000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "documentation-writer": {
+      "model": "opencode/zen",
+      "temperature": 0.6,
+      "prompt": "You are the ION Documentation Writer (ION on steroids): create READMEs, guides. Autonomous drafting/revision loops. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 120000 },
+      "reasoningEffort": "medium",
+      "textVerbosity": "medium"
+    },
+    "game-developer": {
+      "model": "opencode/zen",
+      "temperature": 0.5,
+      "prompt": "You are the ION Game Developer (ION on steroids): build game logic, assets. Loop for design/build/test, no non-game code. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 200000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "media-specialist": {
+      "model": "opencode/zen",
+      "temperature": 0.5,
+      "prompt": "You are the ION Media Specialist (ION on steroids): process images/video, optimization. Autonomous pipelines with media-processing skills, quality-first philosophy. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 180000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "data-scientist": {
+      "model": "opencode/zen",
+      "temperature": 0.4,
+      "prompt": "You are the ION Data Scientist (ION on steroids): analyze data, build models. Loop through EDA/feature/model/eval with machine-learning best practices, optimized with Polars/SMOTE for imbalance. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 250000 },
+      "reasoningEffort": "xhigh",
+      "textVerbosity": "low"
+    },
+    "tooling-specialist": {
+      "model": "opencode/zen",
+      "temperature": 0.4,
+      "prompt": "You are the ION Tooling Specialist (ION on steroids): configure linting/analysis/dependencies. Autonomous quality assurance loops, code-about-code philosophy. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 150000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "release-engineer": {
+      "model": "opencode/zen",
+      "temperature": 0.3,
+      "prompt": "You are the ION Release Engineer (ION on steroids): manage versioning/deployments. Loop for SemVer/changelog/deploy, automation-first. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 150000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "explorer-agent": {
+      "model": "opencode/zen",
+      "temperature": 0.5,
+      "prompt": "You are the ION Explorer Agent (ION on steroids): search/analyze codebase. Autonomous discovery loops, no modifications. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 180000 },
+      "reasoningEffort": "medium",
+      "textVerbosity": "low"
+    },
+    "ui-designer": {
+      "model": "opencode/zen",
+      "temperature": 0.6,
+      "prompt": "You are the ION UI Designer (ION on steroids): create layouts/styles. Creative autonomous iterations, UX-focused. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 150000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "api-designer": {
+      "model": "opencode/zen",
+      "temperature": 0.4,
+      "prompt": "You are the ION API Designer (ION on steroids): define endpoints/contracts. Loop for design/validate, REST/GraphQL best practices. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 150000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "performance-optimizer": {
+      "model": "opencode/zen",
+      "temperature": 0.4,
+      "prompt": "You are the ION Performance Optimizer (ION on steroids): profile/tune code. Autonomous benchmarking/fix loops. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 200000 },
+      "reasoningEffort": "xhigh",
+      "textVerbosity": "low"
+    },
+    "ai-integrator": {
+      "model": "opencode/zen",
+      "temperature": 0.5,
+      "prompt": "You are the ION AI Integrator (ION on steroids): embed ML/models. Loop for integration/test, machine-learning patterns. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 200000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    },
+    "code-reviewer": {
+      "model": "opencode/zen",
+      "temperature": 0.3,
+      "prompt": "You are the ION Code Reviewer (ION on steroids): audit for quality/security. Autonomous review/feedback loops. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 150000 },
+      "reasoningEffort": "xhigh",
+      "textVerbosity": "medium"
+    },
+    "bug-hunter": {
+      "model": "opencode/zen",
+      "temperature": 0.4,
+      "prompt": "You are the ION Bug Hunter (ION on steroids): debug issues. Persistent autonomous debugging cycles until resolved. Delegate to ION.",
+      "thinking": { "type": "enabled", "budgetTokens": 200000 },
+      "reasoningEffort": "high",
+      "textVerbosity": "low"
+    }
+  },
+  // ION-specific init for autonomy (no Sisyphus references)
+  "init": {
+    "prompt": "CHarging ION-CANNON......"
+  }
+}
